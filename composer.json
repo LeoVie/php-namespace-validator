@@ -1,5 +1,17 @@
 {
-    "require": {
-        "symfony/console": "^4.2"
+  "require": {
+    "symfony/console": "^4.2",
+    "symfony/finder": "^4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "LeoVie\\": "src/Classes/"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
 }

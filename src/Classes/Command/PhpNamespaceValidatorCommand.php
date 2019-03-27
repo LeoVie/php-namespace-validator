@@ -1,0 +1,51 @@
+<?php
+
+namespace LeoVie\PhpNamespaceValidator\Command;
+
+use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
+use LeoVie\PhpNamespaceValidator\Configuration\ConfigurationLoader;
+use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
+use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNamespaceValidator\PhpClass\PhpClass;
+use LeoVie\PhpNamespaceValidator\PhpClass\PhpClassLoader;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+class PhpNamespaceValidatorCommand extends Command
+{
+    protected static $defaultName = 'php-namespace-validator:validate';
+
+    /** @var Configuration $configuration */
+    private $configuration;
+
+    protected function configure()
+    {
+
+    }
+
+    /**
+     * @return int|void|null
+     * @throws ConfigurationCouldNotBeParsedException
+     * @throws ConfigurationFileNotFoundException
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $configurationLoader = new ConfigurationLoader();
+        $this->configuration = $configurationLoader->loadConfiguration();
+
+        $phpClassLoader = new PhpClassLoader();
+        $phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
+        $phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
+        $phpClasses = $phpClassLoader->getPhpClasses();
+
+        /** @var PhpClass[] $phpClasses */
+        foreach ($phpClasses as $phpClass) {
+            $namespaceMatchesPath = $phpClass->validateNamespaceMatchesPath();
+
+            if (!$namespaceMatchesPath) {
+                $output->writeln($phpClass->getDoesNotMatchMessage());
+            }
+        }
+    }
+}

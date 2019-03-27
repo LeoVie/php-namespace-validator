@@ -1,0 +1,4 @@
+{
+  "base-namespace": "LeoVie\\PhpNamespaceValidator\\Testdata",
+  "classes-dir": "./testdata/"
+}
