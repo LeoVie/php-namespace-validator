@@ -1,3 +1,6 @@
+## 0.1.2 (März 28, 2019)
+  - Find not only classes but also interfaces and traits
+
 ## 0.1.1 (März 28, 2019)
   - Make php-namespace-validator:validate to default command, remove require_once
 
