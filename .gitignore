@@ -1,6 +1,6 @@
 .idea
 vendor
 *.cache
-bin/
-!bin/php-namespace-validator
+bin/phpunit
+bin/phpunit.bat
 build
