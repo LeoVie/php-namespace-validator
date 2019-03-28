@@ -4,8 +4,6 @@ namespace LeoVie\PhpNamespaceValidator\PhpClass;
 
 use Symfony\Component\Finder\Finder;
 
-require_once(__DIR__ . '/../../../vendor/autoload.php');
-
 class PhpClassLoader
 {
     private $phpClasses = [];

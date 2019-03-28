@@ -2,8 +2,6 @@
 
 namespace LeoVie\PhpNamespaceValidator\Configuration;
 
-require_once(__DIR__ . '/../../../vendor/autoload.php');
-
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
 

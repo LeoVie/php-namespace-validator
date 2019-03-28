@@ -7,6 +7,10 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$application->add(new \LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand());
+$phpNamespaceValidator = new \LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand();
+
+$application->add($phpNamespaceValidator);
+
+$application->setDefaultCommand($phpNamespaceValidator->getName(), true);
 
 $application->run();
