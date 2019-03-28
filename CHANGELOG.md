@@ -1,3 +1,6 @@
+## 0.1.3 (März 28, 2019)
+  - Make configuration path more flexible
+
 ## 0.1.2 (März 28, 2019)
   - Find not only classes but also interfaces and traits
 
