@@ -68,7 +68,7 @@ class PhpClassLoader
 
     private function extractClassnameFromClassContent(string $classContent)
     {
-        $pattern = '@class\s+(.+)@i';
+        $pattern = '@(?>class|interface|trait)\s+(.+)@i';
 
         preg_match($pattern, $classContent, $matches);
 

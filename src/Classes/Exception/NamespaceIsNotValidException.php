@@ -11,7 +11,7 @@ class NamespaceIsNotValidException extends Exception
     const NAMESPACE_DOES_NOT_MATCH_PATH = 20;
     private const ABSOLUTE_PATH_PLACEHOLDER = '__ABSOLUTE_PATH__';
     private const NAMESPACE_PLACEHOLDER = '__NAMESPACE__';
-    const MESSAGE_TEMPLATE = 'Class "__ABSOLUTE_PATH__" does not match namespace "__NAMESPACE__.';
+    const MESSAGE_TEMPLATE = 'Class "__ABSOLUTE_PATH__" does not match namespace "__NAMESPACE__".';
 
     private $absolutePath;
     private $namespace;
