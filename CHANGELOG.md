@@ -1,3 +1,6 @@
+## 0.1.6 (März 28, 2019)
+  - Fix bin path in composer.json
+
 ## 0.1.5 (März 28, 2019)
   - Add bin to composer.json
 
