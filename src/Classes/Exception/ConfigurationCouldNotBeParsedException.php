@@ -7,7 +7,7 @@ use Throwable;
 
 class ConfigurationCouldNotBeParsedException extends Exception
 {
-    private const DEFAULT_MESSAGE = 'Configuration could not be parsed';
+    const DEFAULT_MESSAGE = 'Configuration could not be parsed';
 
     public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
     {

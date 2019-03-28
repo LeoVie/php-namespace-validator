@@ -1,4 +1,6 @@
 .idea
 vendor
 *.cache
-bin/phpunit
+bin/
+!bin/console
+build

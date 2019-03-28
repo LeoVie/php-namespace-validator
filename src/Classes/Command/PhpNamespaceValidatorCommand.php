@@ -6,6 +6,8 @@ use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
 use LeoVie\PhpNamespaceValidator\Configuration\ConfigurationLoader;
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNamespaceValidator\Exception\PropertyNotSetException;
 use LeoVie\PhpNamespaceValidator\PhpClass\PhpClass;
 use LeoVie\PhpNamespaceValidator\PhpClass\PhpClassLoader;
 use Symfony\Component\Console\Command\Command;
@@ -18,11 +20,6 @@ class PhpNamespaceValidatorCommand extends Command
 
     /** @var Configuration $configuration */
     private $configuration;
-
-    protected function configure()
-    {
-
-    }
 
     /**
      * @return int|void|null
@@ -41,10 +38,12 @@ class PhpNamespaceValidatorCommand extends Command
 
         /** @var PhpClass[] $phpClasses */
         foreach ($phpClasses as $phpClass) {
-            $namespaceMatchesPath = $phpClass->validateNamespaceMatchesPath();
-
-            if (!$namespaceMatchesPath) {
-                $output->writeln($phpClass->getDoesNotMatchMessage());
+            try {
+                $phpClass->throwIfNamespaceIsNotValid();
+            } catch (NamespaceIsNotValidException $e) {
+                $output->writeln($e->getMessage());
+            } catch (PropertyNotSetException $e) {
+                $output->writeln($e->getMessage());
             }
         }
     }

@@ -2,6 +2,9 @@
 
 namespace LeoVie\PhpNamespaceValidator\PhpClass;
 
+use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNamespaceValidator\Exception\PropertyNotSetException;
+
 class PhpClass
 {
     private $baseNamespace;
@@ -35,21 +38,31 @@ class PhpClass
         $this->absolutePath = $absolutePath;
     }
 
-    public function validateNamespaceMatchesPath(): bool
+    /**
+     * @throws NamespaceIsNotValidException
+     * @throws PropertyNotSetException
+     */
+    public function throwIfNamespaceIsNotValid(): bool
     {
+        if ($this->absolutePath === null) {
+            throw new PropertyNotSetException('absolutePath');
+        }
+        if ($this->namespace === null) {
+            throw new PropertyNotSetException('namespace');
+        }
+
         $relativePath = str_replace('/', '\\', $this->relativePath);
         $expectedNamespace = "$this->baseNamespace\\$relativePath";
 
         if (!$this->namespaceBelongsToBaseNamespace()) {
-            return false;
+            throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE);
         }
 
         $expectedNamespace = trim($expectedNamespace, '\\');
 
         if ($this->namespace !== $expectedNamespace) {
-            return false;
+            throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_MATCH_PATH);
         }
-
 
         return true;
     }
@@ -60,14 +73,5 @@ class PhpClass
             return false;
         }
         return true;
-    }
-
-    public function getDoesNotMatchMessage(): string
-    {
-        $message
-            = 'Class ' . $this->absolutePath . ' '
-            . 'does not match namespace ' . $this->namespace;
-
-        return $message;
     }
 }

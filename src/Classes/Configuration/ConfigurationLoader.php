@@ -17,7 +17,9 @@ class ConfigurationLoader
      * @throws ConfigurationCouldNotBeParsedException
      * @throws ConfigurationFileNotFoundException
      */
-    public function loadConfiguration(string $configurationPath = self::DEFAULT_CONFIGURATION_PATH): Configuration
+    public function loadConfiguration(
+        string $configurationPath = self::DEFAULT_CONFIGURATION_PATH
+    ): Configuration
     {
         $this->configurationPath = $configurationPath;
         $configurationHolder = $this->populateConfigurationHolder();
@@ -46,7 +48,9 @@ class ConfigurationLoader
         return $configurationHolder;
     }
 
-    private function constructSetterMethodNameForConfigurationEntryKey(string $configurationEntryKey): string
+    private function constructSetterMethodNameForConfigurationEntryKey(
+        string $configurationEntryKey
+    ): string
     {
         $camelCaseKey = $this->convertHyphenatedToCamelCase($configurationEntryKey);
         $methodName = 'set' . $camelCaseKey;
@@ -56,7 +60,8 @@ class ConfigurationLoader
 
     private function convertHyphenatedToCamelCase(string $hyphenatedString): string
     {
-        $camelCaseString = str_replace('-', '', ucwords($hyphenatedString, '-'));
+        $uppercasedWordsString = ucwords($hyphenatedString, '-');
+        $camelCaseString = str_replace('-', '', $uppercasedWordsString);
 
         return $camelCaseString;
     }

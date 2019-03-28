@@ -7,7 +7,7 @@ use Throwable;
 
 class ConfigurationFileNotFoundException extends Exception
 {
-    private const DEFAULT_MESSAGE_PREFIX = 'No configuration file found at ';
+    const DEFAULT_MESSAGE_PREFIX = 'No configuration file found at ';
 
     public function __construct(string $configurationPath, string $message = "", int $code = 0, Throwable $previous = null)
     {
