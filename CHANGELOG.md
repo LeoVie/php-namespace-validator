@@ -1,3 +1,6 @@
+## 0.1.4 (März 28, 2019)
+  - Add bin/php-namespace-validator
+
 ## 0.1.3 (März 28, 2019)
   - Make configuration path more flexible
 
