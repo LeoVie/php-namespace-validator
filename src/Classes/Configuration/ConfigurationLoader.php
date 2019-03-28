@@ -15,10 +15,11 @@ class ConfigurationLoader
      * @throws ConfigurationCouldNotBeParsedException
      * @throws ConfigurationFileNotFoundException
      */
-    public function loadConfiguration(
-        string $configurationPath = self::DEFAULT_CONFIGURATION_PATH
-    ): Configuration
+    public function loadConfiguration(?string $configurationPath = null): Configuration
     {
+        if ($configurationPath === null) {
+            $configurationPath = self::DEFAULT_CONFIGURATION_PATH;
+        }
         $this->configurationPath = $configurationPath;
         $configurationHolder = $this->populateConfigurationHolder();
 

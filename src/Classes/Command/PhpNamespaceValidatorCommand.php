@@ -21,6 +21,14 @@ class PhpNamespaceValidatorCommand extends Command
     /** @var Configuration $configuration */
     private $configuration;
 
+    private $configurationPath;
+
+    public function __construct(?string $name = null, ?string $configurationPath = null)
+    {
+        parent::__construct($name);
+        $this->configurationPath = $configurationPath;
+    }
+
     /**
      * @return int|void|null
      * @throws ConfigurationCouldNotBeParsedException
@@ -29,7 +37,7 @@ class PhpNamespaceValidatorCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $configurationLoader = new ConfigurationLoader();
-        $this->configuration = $configurationLoader->loadConfiguration();
+        $this->configuration = $configurationLoader->loadConfiguration($this->configurationPath);
 
         $phpClassLoader = new PhpClassLoader();
         $phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
