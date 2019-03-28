@@ -1,3 +1,6 @@
+## 0.1.7 (März 28, 2019)
+  - Fix paths in php-namespace-validator
+
 ## 0.1.6 (März 28, 2019)
   - Fix bin path in composer.json
 
