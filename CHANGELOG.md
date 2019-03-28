@@ -1,3 +1,6 @@
+## 0.1.5 (März 28, 2019)
+  - Add bin to composer.json
+
 ## 0.1.4 (März 28, 2019)
   - Add bin/php-namespace-validator
 
