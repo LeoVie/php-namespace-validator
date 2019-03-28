@@ -1,4 +1,16 @@
 {
+  "name": "leovie/php-namespace-validator",
+  "type": "library",
+  "description": "Validates php namespaces",
+  "keywords": ["namespace"],
+  "homepage": "https://github.com/LeoVie/php-namespace-validator",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Leo Viezens",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "symfony/console": "^4.2",
     "symfony/finder": "^4.2"
