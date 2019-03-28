@@ -1,13 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../../autoload.php';
 
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$phpNamespaceValidator = new \LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand(null, realpath(__DIR__ . '/../php-namespace-validator.json'));
+$configurationFile = __DIR__ . '/../../../../php-namespace-validator.json';
+
+$phpNamespaceValidator = new \LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand(null, realpath($configurationFile));
 
 $application->add($phpNamespaceValidator);
 
