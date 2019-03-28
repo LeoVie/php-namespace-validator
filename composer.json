@@ -27,6 +27,6 @@
     "bin-dir": "bin"
   },
   "bin": [
-    "php-namespace-validator"
+    "bin/php-namespace-validator"
   ]
 }
