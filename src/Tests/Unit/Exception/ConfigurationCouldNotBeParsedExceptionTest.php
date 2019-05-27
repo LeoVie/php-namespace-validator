@@ -1,8 +1,8 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
+use LeoVie\PhpNf\Exception\ConfigurationCouldNotBeParsedException;
 use PHPUnit\Framework\TestCase;
 
 class ConfigurationCouldNotBeParsedExceptionTest extends TestCase

@@ -5,12 +5,12 @@ require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . 
 
 use Symfony\Component\Console\Application;
 
-$kernel = new \LeoVie\PhpNamespaceValidator\AppKernel('dev', true);
+$kernel = new \LeoVie\PhpNf\AppKernel('dev', true);
 $kernel->boot();
 
 $container = $kernel->getContainer();
 $application = $container->get(Application::class);
 
-$application->setDefaultCommand(\LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand::NAME);
+$application->setDefaultCommand(\LeoVie\PhpNf\Command\PhpNamespaceValidatorCommand::NAME);
 
 $application->run();

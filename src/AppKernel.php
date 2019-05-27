@@ -1,8 +1,8 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator;
+namespace LeoVie\PhpNf;
 
-use LeoVie\PhpNamespaceValidator\DependencyInjection\CollectCommandsToApplicationCompilerPass;
+use LeoVie\PhpNf\DependencyInjection\CollectCommandsToApplicationCompilerPass;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

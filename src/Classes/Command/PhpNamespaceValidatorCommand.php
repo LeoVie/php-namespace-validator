@@ -1,15 +1,15 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Command;
+namespace LeoVie\PhpNf\Command;
 
-use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
-use LeoVie\PhpNamespaceValidator\Configuration\ConfigurationLoader;
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
-use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
-use LeoVie\PhpNamespaceValidator\Exception\PropertyNotSetException;
-use LeoVie\PhpNamespaceValidator\PhpClass\PhpClass;
-use LeoVie\PhpNamespaceValidator\PhpClass\PhpClassLoader;
+use LeoVie\PhpNf\Configuration\Configuration;
+use LeoVie\PhpNf\Configuration\ConfigurationLoader;
+use LeoVie\PhpNf\Exception\ConfigurationCouldNotBeParsedException;
+use LeoVie\PhpNf\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNf\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNf\Exception\PropertyNotSetException;
+use LeoVie\PhpNf\PhpClass\PhpClass;
+use LeoVie\PhpNf\PhpClass\PhpClassLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -1,8 +1,8 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
+use LeoVie\PhpNf\Configuration\Configuration;
 use PHPUnit\Framework\TestCase;
 
 class ConfigurationTest extends TestCase

@@ -1,10 +1,10 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
-use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
-use LeoVie\PhpNamespaceValidator\Exception\PropertyNotSetException;
+use LeoVie\PhpNf\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNf\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNf\Exception\PropertyNotSetException;
 use PHPUnit\Framework\TestCase;
 
 class PropertyNotSetExceptionTest extends TestCase

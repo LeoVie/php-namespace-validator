@@ -1,9 +1,9 @@
 {
-  "name": "leovie/php-namespace-validator",
+  "name": "leovie/php-nf",
   "type": "library",
   "description": "Validates php namespaces",
   "keywords": ["namespace"],
-  "homepage": "https://github.com/LeoVie/php-namespace-validator",
+  "homepage": "https://github.com/LeoVie/php-nf",
   "license": "MIT",
   "authors": [
     {
@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "LeoVie\\": "src/Classes/"
+      "LeoVie\\PhpNf\\": "src/Classes/"
     },
     "classmap": ["src/AppKernel.php"]
   },
@@ -33,6 +33,6 @@
     "optimize-autoloader": true
   },
   "bin": [
-    "bin/php-namespace-validator"
+    "bin/php-nf"
   ]
 }

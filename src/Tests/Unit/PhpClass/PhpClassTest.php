@@ -1,9 +1,9 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
-use LeoVie\PhpNamespaceValidator\PhpClass\PhpClass;
+use LeoVie\PhpNf\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNf\PhpClass\PhpClass;
 use PHPUnit\Framework\TestCase;
 
 class PhpClassTest extends TestCase

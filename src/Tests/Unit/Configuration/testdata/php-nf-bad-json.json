@@ -1,0 +1,4 @@
+{
+  "base-namespace": "LeoVie\\PhpNf"
+  "classes-dir": "./src/Classes/"
+}
