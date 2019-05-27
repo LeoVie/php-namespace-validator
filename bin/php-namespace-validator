@@ -11,12 +11,6 @@ $kernel->boot();
 $container = $kernel->getContainer();
 $application = $container->get(Application::class);
 
-$configurationFile = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'php-namespace-validator.json';
-
-$phpNamespaceValidator = new \LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand(null, realpath($configurationFile));
-
-$application->add($phpNamespaceValidator);
-
-$application->setDefaultCommand($phpNamespaceValidator->getName(), true);
+$application->setDefaultCommand(\LeoVie\PhpNamespaceValidator\Command\PhpNamespaceValidatorCommand::NAME);
 
 $application->run();
