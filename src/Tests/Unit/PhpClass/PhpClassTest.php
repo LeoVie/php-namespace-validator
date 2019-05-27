@@ -2,8 +2,6 @@
 
 namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
 
-require_once(__DIR__ . '/../../../../vendor/autoload.php');
-
 use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
 use LeoVie\PhpNamespaceValidator\PhpClass\PhpClass;
 use PHPUnit\Framework\TestCase;
@@ -30,40 +28,40 @@ class PhpClassTest extends TestCase
         $this->phpClass->setAbsolutePath(self::ABSOLUTE_PATH);
     }
 
-    public function testThrowsIfNamespaceDoesNotBelongToBaseNamespace()
+    public function testThrowsIfNamespaceDoesNotBelongToBaseNamespace(): void
     {
         $this->setNamespaceNotBelongingToBaseNamespace();
 
-        $this->expectException(NamespaceIsNotValidException::class);
+        self::expectException(NamespaceIsNotValidException::class);
         $this->phpClass->throwIfNamespaceIsNotValid();
     }
 
-    private function setNamespaceNotBelongingToBaseNamespace()
+    private function setNamespaceNotBelongingToBaseNamespace(): void
     {
         $this->phpClass->setNamespace(self::NAMESPACE_NOT_MATCHING_BASE_NAMESPACE);
     }
 
-    public function testThrowsIfNamespaceDoesNotMatchPath()
+    public function testThrowsIfNamespaceDoesNotMatchPath(): void
     {
         $this->setNamespaceNotMatchingPath();
 
-        $this->expectException(NamespaceIsNotValidException::class);
+        self::expectException(NamespaceIsNotValidException::class);
         $this->phpClass->throwIfNamespaceIsNotValid();
     }
 
-    private function setNamespaceNotMatchingPath()
+    private function setNamespaceNotMatchingPath(): void
     {
         $this->phpClass->setNamespace(self::NAMESPACE_MATCHING_BASE_NAMESPACE_NOT_MATCHING_PATH);
     }
 
-    public function testThrowsNotIfNamespaceBelongsToBaseNamespaceAndMatchesPath()
+    public function testThrowsNotIfNamespaceBelongsToBaseNamespaceAndMatchesPath(): void
     {
         $this->setNamespaceBelongingToBaseNamespaceAndMatchingPath();
 
-        $this->addToAssertionCount(1);
+        self::addToAssertionCount(1);
     }
 
-    private function setNamespaceBelongingToBaseNamespaceAndMatchingPath()
+    private function setNamespaceBelongingToBaseNamespaceAndMatchingPath(): void
     {
         $this->phpClass->setNamespace(self::NAMESPACE_MATCHING_BASE_NAMESPACE_MATCHING_PATH);
     }

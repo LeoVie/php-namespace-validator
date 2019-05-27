@@ -2,8 +2,6 @@
 
 namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
 
-require_once(__DIR__ . '/../../../../vendor/autoload.php');
-
 use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
 use LeoVie\PhpNamespaceValidator\Configuration\ConfigurationLoader;
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
@@ -26,7 +24,7 @@ class ConfigurationLoaderTest extends TestCase
     {
         $configurationPath = 'ABC';
 
-        $this->expectException(ConfigurationFileNotFoundException::class);
+        self::expectException(ConfigurationFileNotFoundException::class);
         $this->configurationLoader->loadConfiguration($configurationPath);
     }
 
@@ -34,11 +32,11 @@ class ConfigurationLoaderTest extends TestCase
     {
         $configurationPath = self::TESTDATA_DIRECTORY . 'php-namespace-validator-bad-json.json';
 
-        $this->expectException(ConfigurationCouldNotBeParsedException::class);
+        self::expectException(ConfigurationCouldNotBeParsedException::class);
         $this->configurationLoader->loadConfiguration($configurationPath);
     }
 
-    public function testReturnsConfigurationHolderWithCorrectValues()
+    public function testReturnsConfigurationHolderWithCorrectValues(): void
     {
         $configurationPath = self::TESTDATA_DIRECTORY . 'php-namespace-validator-good.json';
 
@@ -51,7 +49,7 @@ class ConfigurationLoaderTest extends TestCase
         $actualBaseNamespace = $configurationHolder->getBaseNamespace();
         $actualClassesDir = $configurationHolder->getClassesDir();
 
-        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
-        $this->assertEquals($expectedClassesDir, $actualClassesDir);
+        self::assertEquals($expectedBaseNamespace, $actualBaseNamespace);
+        self::assertEquals($expectedClassesDir, $actualClassesDir);
     }
 }

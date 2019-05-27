@@ -2,8 +2,6 @@
 
 namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
 
-require_once(__DIR__ . '/../../../../vendor/autoload.php');
-
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
 use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
 use PHPUnit\Framework\TestCase;
@@ -14,7 +12,7 @@ class NamespaceIsNotValidExceptionTest extends TestCase
     private const NAMESPACE = 'Foo\\Foo\\Bar';
     private const MESSAGE_TYPE = NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE;
 
-    public function testExceptionMessageContainsAbsolutePath()
+    public function testExceptionMessageContainsAbsolutePath(): void
     {
         try {
             throw new NamespaceIsNotValidException(self::ABSOLUTE_PATH, self::NAMESPACE, self::MESSAGE_TYPE);
@@ -22,10 +20,10 @@ class NamespaceIsNotValidExceptionTest extends TestCase
             $message = $e->getMessage();
         }
 
-        $this->assertStringContainsString(self::ABSOLUTE_PATH, $message);
+        self::assertStringContainsString(self::ABSOLUTE_PATH, $message);
     }
 
-    public function testExceptionMessageContainsNamespace()
+    public function testExceptionMessageContainsNamespace(): void
     {
         try {
             throw new NamespaceIsNotValidException(self::ABSOLUTE_PATH, self::NAMESPACE, self::MESSAGE_TYPE);
@@ -33,6 +31,6 @@ class NamespaceIsNotValidExceptionTest extends TestCase
             $message = $e->getMessage();
         }
 
-        $this->assertStringContainsString(self::NAMESPACE, $message);
+        self::assertStringContainsString(self::NAMESPACE, $message);
     }
 }
