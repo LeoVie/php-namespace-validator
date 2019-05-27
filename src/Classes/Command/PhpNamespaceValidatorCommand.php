@@ -30,11 +30,10 @@ class PhpNamespaceValidatorCommand extends Command
     }
 
     /**
-     * @return int|void|null
      * @throws ConfigurationCouldNotBeParsedException
      * @throws ConfigurationFileNotFoundException
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $configurationLoader = new ConfigurationLoader();
         $this->configuration = $configurationLoader->loadConfiguration($this->configurationPath);
