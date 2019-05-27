@@ -16,33 +16,40 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class PhpNamespaceValidatorCommand extends Command
 {
-    protected static $defaultName = 'php-namespace-validator:validate';
+    public const NAME = 'php-nf';
+    protected static $defaultName = self::NAME;
 
     /** @var Configuration $configuration */
     private $configuration;
 
     private $configurationPath;
 
-    public function __construct(?string $name = null, ?string $configurationPath = null)
+    /** @var ConfigurationLoader */
+    private $configurationLoader;
+
+    /** @var PhpClassLoader */
+    private $phpClassLoader;
+
+    public function __construct(
+        ConfigurationLoader $configurationLoader,
+        PhpClassLoader $phpClassLoader
+    )
     {
-        parent::__construct($name);
-        $this->configurationPath = $configurationPath;
+        parent::__construct();
+        $this->configurationLoader = $configurationLoader;
+        $this->phpClassLoader = $phpClassLoader;
     }
 
     /**
-     * @return int|void|null
      * @throws ConfigurationCouldNotBeParsedException
      * @throws ConfigurationFileNotFoundException
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $configurationLoader = new ConfigurationLoader();
-        $this->configuration = $configurationLoader->loadConfiguration($this->configurationPath);
-
-        $phpClassLoader = new PhpClassLoader();
-        $phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
-        $phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
-        $phpClasses = $phpClassLoader->getPhpClasses();
+        $this->configuration = $this->configurationLoader->loadConfiguration($this->configurationPath);
+        $this->phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
+        $this->phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
+        $phpClasses = $this->phpClassLoader->getPhpClasses();
 
         /** @var PhpClass[] $phpClasses */
         foreach ($phpClasses as $phpClass) {

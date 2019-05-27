@@ -4,3 +4,4 @@ vendor
 bin/phpunit
 bin/phpunit.bat
 build
+var
