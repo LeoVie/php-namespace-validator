@@ -2,8 +2,6 @@
 
 namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
 
-require_once(__DIR__ . '/../../../../vendor/autoload.php');
-
 use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +10,7 @@ class ConfigurationFileNotFoundExceptionTest extends TestCase
     private const CONFIGURATION_PATH = 'foo/bar/configuration.json';
     private const CUSTOM_MESSAGE = 'This is a custom message!';
 
-    public function testExceptionMessageIsDefaultMessageWhenNoMessageIsPassed()
+    public function testExceptionMessageIsDefaultMessageWhenNoMessageIsPassed(): void
     {
         $expectedMessage = ConfigurationFileNotFoundException::DEFAULT_MESSAGE_PREFIX . self::CONFIGURATION_PATH;
         try {
@@ -21,10 +19,10 @@ class ConfigurationFileNotFoundExceptionTest extends TestCase
             $actualMessage = $exception->getMessage();
         }
 
-        $this->assertEquals($expectedMessage, $actualMessage);
+        self::assertEquals($expectedMessage, $actualMessage);
     }
 
-    public function testExceptionMessageIsPassedMessageWhenMessageIsPassed()
+    public function testExceptionMessageIsPassedMessageWhenMessageIsPassed(): void
     {
         $expectedMessage = self::CUSTOM_MESSAGE;
         try {
@@ -36,6 +34,6 @@ class ConfigurationFileNotFoundExceptionTest extends TestCase
             $actualMessage = $exception->getMessage();
         }
 
-        $this->assertEquals($expectedMessage, $actualMessage);
+        self::assertEquals($expectedMessage, $actualMessage);
     }
 }

@@ -4,8 +4,8 @@ namespace LeoVie\PhpNamespaceValidator\Configuration;
 
 class Configuration
 {
-    private $baseNamespace;
-    private $classesDir;
+    private $baseNamespace = '';
+    private $classesDir = '';
 
     public function getBaseNamespace(): string
     {
