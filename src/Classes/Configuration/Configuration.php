@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Configuration;
+namespace LeoVie\PhpNf\Configuration;
 
 class Configuration
 {

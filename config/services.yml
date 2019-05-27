@@ -3,7 +3,7 @@ services:
   _defaults:
     autowire: true
 
-  LeoVie\PhpNamespaceValidator\:
+  LeoVie\PhpNf\:
     resource: '../src/Classes'
 
   Symfony\Component\Console\Application:

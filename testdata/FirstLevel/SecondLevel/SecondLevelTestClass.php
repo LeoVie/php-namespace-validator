@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Testdata\FirstLevel\SecondLevel;
+namespace LeoVie\PhpNf\Testdata\FirstLevel\SecondLevel;
 
 class SecondLevelTestClass
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Configuration;
+namespace LeoVie\PhpNf\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNf\Exception\ConfigurationCouldNotBeParsedException;
+use LeoVie\PhpNf\Exception\ConfigurationFileNotFoundException;
 
 class ConfigurationLoader
 {
-    private const DEFAULT_CONFIGURATION_PATH = __DIR__ . '/../../../php-namespace-validator.json';
+    private const DEFAULT_CONFIGURATION_PATH = __DIR__ . '/../../../php-nf.json';
 
     private $configurationPath;
 

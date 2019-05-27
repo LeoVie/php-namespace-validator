@@ -1,11 +1,11 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Configuration\Configuration;
-use LeoVie\PhpNamespaceValidator\Configuration\ConfigurationLoader;
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationCouldNotBeParsedException;
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNf\Configuration\Configuration;
+use LeoVie\PhpNf\Configuration\ConfigurationLoader;
+use LeoVie\PhpNf\Exception\ConfigurationCouldNotBeParsedException;
+use LeoVie\PhpNf\Exception\ConfigurationFileNotFoundException;
 use PHPUnit\Framework\TestCase;
 
 class ConfigurationLoaderTest extends TestCase
@@ -30,7 +30,7 @@ class ConfigurationLoaderTest extends TestCase
 
     public function testThrowsIfBadJson(): void
     {
-        $configurationPath = self::TESTDATA_DIRECTORY . 'php-namespace-validator-bad-json.json';
+        $configurationPath = self::TESTDATA_DIRECTORY . 'php-nf-bad-json.json';
 
         self::expectException(ConfigurationCouldNotBeParsedException::class);
         $this->configurationLoader->loadConfiguration($configurationPath);
@@ -38,9 +38,9 @@ class ConfigurationLoaderTest extends TestCase
 
     public function testReturnsConfigurationHolderWithCorrectValues(): void
     {
-        $configurationPath = self::TESTDATA_DIRECTORY . 'php-namespace-validator-good.json';
+        $configurationPath = self::TESTDATA_DIRECTORY . 'php-nf-good.json';
 
-        $expectedBaseNamespace = "LeoVie\\PhpNamespaceValidator";
+        $expectedBaseNamespace = "LeoVie\\PhpNf";
         $expectedClassesDir = "./src/Classes/";
 
         /** @var Configuration $configurationHolder */

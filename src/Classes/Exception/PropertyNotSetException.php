@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Exception;
+namespace LeoVie\PhpNf\Exception;
 
 use Exception;
 use Throwable;

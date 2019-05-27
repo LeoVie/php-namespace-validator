@@ -1,8 +1,8 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Tests\Unit\Configuration;
+namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
-use LeoVie\PhpNamespaceValidator\Exception\ConfigurationFileNotFoundException;
+use LeoVie\PhpNf\Exception\ConfigurationFileNotFoundException;
 use PHPUnit\Framework\TestCase;
 
 class ConfigurationFileNotFoundExceptionTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\DependencyInjection;
+namespace LeoVie\PhpNf\DependencyInjection;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;

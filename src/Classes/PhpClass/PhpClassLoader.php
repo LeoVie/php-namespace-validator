@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\PhpClass;
+namespace LeoVie\PhpNf\PhpClass;
 
 use Symfony\Component\Finder\Finder;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\Testdata;
+namespace LeoVie\PhpNf\Testdata;
 
 class FancyTestClass
 {

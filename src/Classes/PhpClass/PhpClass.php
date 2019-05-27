@@ -1,9 +1,9 @@
 <?php
 
-namespace LeoVie\PhpNamespaceValidator\PhpClass;
+namespace LeoVie\PhpNf\PhpClass;
 
-use LeoVie\PhpNamespaceValidator\Exception\NamespaceIsNotValidException;
-use LeoVie\PhpNamespaceValidator\Exception\PropertyNotSetException;
+use LeoVie\PhpNf\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNf\Exception\PropertyNotSetException;
 
 class PhpClass
 {
