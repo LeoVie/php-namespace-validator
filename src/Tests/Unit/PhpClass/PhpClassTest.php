@@ -29,15 +29,16 @@ class PhpClassTest extends TestCase
         $this->phpClass->setAbsolutePath(self::ABSOLUTE_PATH);
     }
 
-    public function testThrowsWhenAbsolutePathIsNull()
+    public function testThrowsIfAbsolutePathIsNull()
     {
         $this->phpClass = new PhpClass();
+        $this->phpClass->setNamespace(self::BASE_NAMESPACE);
 
         self::expectException(PropertyNotSetException::class);
         $this->phpClass->throwIfNamespaceIsNotValid();
     }
 
-    public function testThrowsWhenNamespaceIsNull()
+    public function testThrowsIfNamespaceIsNull()
     {
         $this->phpClass = new PhpClass();
         $this->phpClass->setAbsolutePath(self::ABSOLUTE_PATH);

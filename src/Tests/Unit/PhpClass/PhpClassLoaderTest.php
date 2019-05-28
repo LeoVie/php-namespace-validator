@@ -95,9 +95,27 @@ class PhpClassLoaderTest extends TestCase
     public function testLoadPhpClassesInPath(): void
     {
         $expected = [
-            $this->createPhpClass(self::BASE_NAMESPACE, self::CLASS_NAME, self::BASE_NAMESPACE . '\\Classes', self::RELATIVE_PATH, self::ABSOLUTE_PATH),
-            $this->createPhpClass(self::BASE_NAMESPACE, self::INTERFACE_NAME, self::BASE_NAMESPACE . '\\Interfaces', self::RELATIVE_PATH, self::ABSOLUTE_PATH),
-            $this->createPhpClass(self::BASE_NAMESPACE, self::TRAIT_NAME, self::BASE_NAMESPACE . '\\Traits', self::RELATIVE_PATH, self::ABSOLUTE_PATH),
+            $this->createPhpClass(
+                self::BASE_NAMESPACE,
+                self::CLASS_NAME,
+                self::BASE_NAMESPACE . '\\Classes',
+                self::RELATIVE_PATH,
+                self::ABSOLUTE_PATH
+            ),
+            $this->createPhpClass(
+                self::BASE_NAMESPACE,
+                self::INTERFACE_NAME,
+                self::BASE_NAMESPACE . '\\Interfaces',
+                self::RELATIVE_PATH,
+                self::ABSOLUTE_PATH
+            ),
+            $this->createPhpClass(
+                self::BASE_NAMESPACE,
+                self::TRAIT_NAME,
+                self::BASE_NAMESPACE . '\\Traits',
+                self::RELATIVE_PATH,
+                self::ABSOLUTE_PATH
+            ),
         ];
 
         $this->phpClassLoader->loadPhpClassesInPath('');

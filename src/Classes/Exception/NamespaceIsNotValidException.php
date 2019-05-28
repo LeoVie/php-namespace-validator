@@ -17,7 +17,7 @@ class NamespaceIsNotValidException extends Exception
     private $namespace;
     private $messageType;
 
-    public function __construct(string $absolutePath, string $namespace, int $messageType, int $code = 0, Throwable $previous = null)
+    public function __construct(string $absolutePath, string $namespace, int $messageType)
     {
         $this->absolutePath = $absolutePath;
         $this->namespace = $namespace;
@@ -25,7 +25,7 @@ class NamespaceIsNotValidException extends Exception
 
         $message = $this->constructMessage();
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message);
     }
 
     private function constructMessage(): string

@@ -69,9 +69,6 @@ class PhpClass
 
     private function namespaceBelongsToBaseNamespace(): bool
     {
-        if (strpos($this->namespace, $this->baseNamespace) !== 0) {
-            return false;
-        }
-        return true;
+        return strpos($this->namespace, $this->baseNamespace) === 0;
     }
 }
