@@ -1,0 +1,742 @@
+Escaped mutants:
+================
+
+
+1) C:\xampp\htdocs\github\php-nf\src\Classes\Configuration\ConfigurationLoader.php:62    [M] UnwrapUcWords
+
+--- Original
++++ New
+@@ @@
+     }
+     private function convertHyphenatedToCamelCase(string $hyphenatedString) : string
+     {
+-        $uppercasedWordsString = ucwords($hyphenatedString, '-');
++        $uppercasedWordsString = $hyphenatedString;
+         $camelCaseString = str_replace('-', '', $uppercasedWordsString);
+         return $camelCaseString;
+     }
+
+
+2) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\ConfigurationCouldNotBeParsedException.php:12    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+ class ConfigurationCouldNotBeParsedException extends Exception
+ {
+     const DEFAULT_MESSAGE = 'Configuration could not be parsed';
+-    public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $message = "", int $code = -1, Throwable $previous = null)
+     {
+         if (empty($message)) {
+             $message = self::DEFAULT_MESSAGE;
+
+
+3) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\ConfigurationCouldNotBeParsedException.php:12    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+ class ConfigurationCouldNotBeParsedException extends Exception
+ {
+     const DEFAULT_MESSAGE = 'Configuration could not be parsed';
+-    public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $message = "", int $code = 1, Throwable $previous = null)
+     {
+         if (empty($message)) {
+             $message = self::DEFAULT_MESSAGE;
+
+
+4) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\ConfigurationFileNotFoundException.php:12    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+ class ConfigurationFileNotFoundException extends Exception
+ {
+     const DEFAULT_MESSAGE_PREFIX = 'No configuration file found at ';
+-    public function __construct(string $configurationPath, string $message = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $configurationPath, string $message = "", int $code = -1, Throwable $previous = null)
+     {
+         if (empty($message)) {
+             $message = self::DEFAULT_MESSAGE_PREFIX . $configurationPath;
+
+
+5) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\ConfigurationFileNotFoundException.php:12    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+ class ConfigurationFileNotFoundException extends Exception
+ {
+     const DEFAULT_MESSAGE_PREFIX = 'No configuration file found at ';
+-    public function __construct(string $configurationPath, string $message = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $configurationPath, string $message = "", int $code = 1, Throwable $previous = null)
+     {
+         if (empty($message)) {
+             $message = self::DEFAULT_MESSAGE_PREFIX . $configurationPath;
+
+
+6) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\NamespaceIsNotValidException.php:20    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     private $absolutePath;
+     private $namespace;
+     private $messageType;
+-    public function __construct(string $absolutePath, string $namespace, int $messageType, int $code = 0, Throwable $previous = null)
++    public function __construct(string $absolutePath, string $namespace, int $messageType, int $code = -1, Throwable $previous = null)
+     {
+         $this->absolutePath = $absolutePath;
+         $this->namespace = $namespace;
+
+
+7) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\NamespaceIsNotValidException.php:20    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     private $absolutePath;
+     private $namespace;
+     private $messageType;
+-    public function __construct(string $absolutePath, string $namespace, int $messageType, int $code = 0, Throwable $previous = null)
++    public function __construct(string $absolutePath, string $namespace, int $messageType, int $code = 1, Throwable $previous = null)
+     {
+         $this->absolutePath = $absolutePath;
+         $this->namespace = $namespace;
+
+
+8) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\PropertyNotSetException.php:13    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+ {
+     private const PROPERTY_NAME_PLACEHOLDER = '__PROPERTY_NAME__';
+     private const DEFAULT_MESSAGE_TEMPLATE = 'Property "__PROPERTY_NAME__" has not been set.';
+-    public function __construct(string $propertyName, string $messageTemplate = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $propertyName, string $messageTemplate = "", int $code = 1, Throwable $previous = null)
+     {
+         if (empty($messageTemplate)) {
+             $messageTemplate = self::DEFAULT_MESSAGE_TEMPLATE;
+
+
+9) C:\xampp\htdocs\github\php-nf\src\Classes\Exception\PropertyNotSetException.php:13    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+ {
+     private const PROPERTY_NAME_PLACEHOLDER = '__PROPERTY_NAME__';
+     private const DEFAULT_MESSAGE_TEMPLATE = 'Property "__PROPERTY_NAME__" has not been set.';
+-    public function __construct(string $propertyName, string $messageTemplate = "", int $code = 0, Throwable $previous = null)
++    public function __construct(string $propertyName, string $messageTemplate = "", int $code = -1, Throwable $previous = null)
+     {
+         if (empty($messageTemplate)) {
+             $messageTemplate = self::DEFAULT_MESSAGE_TEMPLATE;
+
+
+10) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:57    [M] LogicalNot
+
+--- Original
++++ New
+@@ @@
+         }
+         $relativePath = str_replace('/', '\\', $this->relativePath);
+         $expectedNamespace = "{$this->baseNamespace}\\{$relativePath}";
+-        if (!$this->namespaceBelongsToBaseNamespace()) {
++        if ($this->namespaceBelongsToBaseNamespace()) {
+             throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE);
+         }
+         $expectedNamespace = trim($expectedNamespace, '\\');
+
+
+11) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:58    [M] Throw_
+
+--- Original
++++ New
+@@ @@
+         $relativePath = str_replace('/', '\\', $this->relativePath);
+         $expectedNamespace = "{$this->baseNamespace}\\{$relativePath}";
+         if (!$this->namespaceBelongsToBaseNamespace()) {
+-            throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE);
++            new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE);
+         }
+         $expectedNamespace = trim($expectedNamespace, '\\');
+         if ($this->namespace !== $expectedNamespace) {
+
+
+12) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:61    [M] UnwrapTrim
+
+--- Original
++++ New
+@@ @@
+         if (!$this->namespaceBelongsToBaseNamespace()) {
+             throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_BELONG_TO_BASE_NAMESPACE);
+         }
+-        $expectedNamespace = trim($expectedNamespace, '\\');
++        $expectedNamespace = $expectedNamespace;
+         if ($this->namespace !== $expectedNamespace) {
+             throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_MATCH_PATH);
+         }
+
+
+13) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:72    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     }
+     private function namespaceBelongsToBaseNamespace() : bool
+     {
+-        if (strpos($this->namespace, $this->baseNamespace) !== 0) {
++        if (strpos($this->namespace, $this->baseNamespace) !== -1) {
+             return false;
+         }
+         return true;
+     }
+
+14) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:72    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     }
+     private function namespaceBelongsToBaseNamespace() : bool
+     {
+-        if (strpos($this->namespace, $this->baseNamespace) !== 0) {
++        if (strpos($this->namespace, $this->baseNamespace) !== 1) {
+             return false;
+         }
+         return true;
+     }
+
+15) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:72    [M] NotIdentical
+
+--- Original
++++ New
+@@ @@
+     }
+     private function namespaceBelongsToBaseNamespace() : bool
+     {
+-        if (strpos($this->namespace, $this->baseNamespace) !== 0) {
++        if (strpos($this->namespace, $this->baseNamespace) === 0) {
+             return false;
+         }
+         return true;
+     }
+
+16) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:73    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+     private function namespaceBelongsToBaseNamespace() : bool
+     {
+         if (strpos($this->namespace, $this->baseNamespace) !== 0) {
+-            return false;
++            return true;
+         }
+         return true;
+     }
+ }
+
+17) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:75    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+         if (strpos($this->namespace, $this->baseNamespace) !== 0) {
+             return false;
+         }
+-        return true;
++        return false;
+     }
+ }
+
+Timed Out mutants:
+==================
+
+Not Covered mutants:
+====================
+
+
+1) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:38    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private $phpClassLoader;
+     public function __construct(ConfigurationLoader $configurationLoader, PhpClassLoader $phpClassLoader)
+     {
+-        parent::__construct();
++        
+         $this->configurationLoader = $configurationLoader;
+         $this->phpClassLoader = $phpClassLoader;
+     }
+
+
+2) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:50    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     protected function execute(InputInterface $input, OutputInterface $output) : void
+     {
+         $this->configuration = $this->configurationLoader->loadConfiguration($this->configurationPath);
+-        $this->phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
++        
+         $this->phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
+         $phpClasses = $this->phpClassLoader->getPhpClasses();
+         /** @var PhpClass[] $phpClasses */
+
+
+3) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:51    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->configuration = $this->configurationLoader->loadConfiguration($this->configurationPath);
+         $this->phpClassLoader->setBaseNamespace($this->configuration->getBaseNamespace());
+-        $this->phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
++        
+         $phpClasses = $this->phpClassLoader->getPhpClasses();
+         /** @var PhpClass[] $phpClasses */
+         foreach ($phpClasses as $phpClass) {
+
+
+4) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:55    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+         $this->phpClassLoader->loadPhpClassesInPath($this->configuration->getClassesDir());
+         $phpClasses = $this->phpClassLoader->getPhpClasses();
+         /** @var PhpClass[] $phpClasses */
+-        foreach ($phpClasses as $phpClass) {
++        foreach (array() as $phpClass) {
+             try {
+                 $phpClass->throwIfNamespaceIsNotValid();
+             } catch (NamespaceIsNotValidException $e) {
+
+
+5) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:57    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         /** @var PhpClass[] $phpClasses */
+         foreach ($phpClasses as $phpClass) {
+             try {
+-                $phpClass->throwIfNamespaceIsNotValid();
++                
+             } catch (NamespaceIsNotValidException $e) {
+                 $output->writeln($e->getMessage());
+             } catch (PropertyNotSetException $e) {
+
+
+6) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:59    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             try {
+                 $phpClass->throwIfNamespaceIsNotValid();
+             } catch (NamespaceIsNotValidException $e) {
+-                $output->writeln($e->getMessage());
++                
+             } catch (PropertyNotSetException $e) {
+                 $output->writeln($e->getMessage());
+             }
+
+
+7) C:\xampp\htdocs\github\php-nf\src\Classes\Command\PhpNamespaceValidatorCommand.php:61    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             } catch (NamespaceIsNotValidException $e) {
+                 $output->writeln($e->getMessage());
+             } catch (PropertyNotSetException $e) {
+-                $output->writeln($e->getMessage());
++                
+             }
+         }
+     }
+ }
+
+8) C:\xampp\htdocs\github\php-nf\src\Classes\DependencyInjection\CollectCommandsToApplicationCompilerPass.php:17    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+     public function process(ContainerBuilder $containerBuilder) : void
+     {
+         $applicationDefinition = $containerBuilder->getDefinition(Application::class);
+-        foreach ($containerBuilder->getDefinitions() as $name => $definition) {
++        foreach (array() as $name => $definition) {
+             if (is_a($definition->getClass(), Command::class, true)) {
+                 $applicationDefinition->addMethodCall('add', [new Reference($name)]);
+             }
+
+
+9) C:\xampp\htdocs\github\php-nf\src\Classes\DependencyInjection\CollectCommandsToApplicationCompilerPass.php:19    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+         $applicationDefinition = $containerBuilder->getDefinition(Application::class);
+         foreach ($containerBuilder->getDefinitions() as $name => $definition) {
+             if (is_a($definition->getClass(), Command::class, true)) {
+-                $applicationDefinition->addMethodCall('add', [new Reference($name)]);
++                $applicationDefinition->addMethodCall('add', []);
+             }
+         }
+     }
+ }
+
+10) C:\xampp\htdocs\github\php-nf\src\Classes\DependencyInjection\CollectCommandsToApplicationCompilerPass.php:19    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $applicationDefinition = $containerBuilder->getDefinition(Application::class);
+         foreach ($containerBuilder->getDefinitions() as $name => $definition) {
+             if (is_a($definition->getClass(), Command::class, true)) {
+-                $applicationDefinition->addMethodCall('add', [new Reference($name)]);
++                
+             }
+         }
+     }
+ }
+
+11) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:48    [M] Throw_
+
+--- Original
++++ New
+@@ @@
+     public function throwIfNamespaceIsNotValid() : bool
+     {
+         if ($this->absolutePath === null) {
+-            throw new PropertyNotSetException('absolutePath');
++            new PropertyNotSetException('absolutePath');
+         }
+         if ($this->namespace === null) {
+             throw new PropertyNotSetException('namespace');
+
+
+12) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:51    [M] Throw_
+
+--- Original
++++ New
+@@ @@
+             throw new PropertyNotSetException('absolutePath');
+         }
+         if ($this->namespace === null) {
+-            throw new PropertyNotSetException('namespace');
++            new PropertyNotSetException('namespace');
+         }
+         $relativePath = str_replace('/', '\\', $this->relativePath);
+         $expectedNamespace = "{$this->baseNamespace}\\{$relativePath}";
+
+
+13) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClass.php:67    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+         if ($this->namespace !== $expectedNamespace) {
+             throw new NamespaceIsNotValidException($this->absolutePath, $this->namespace, NamespaceIsNotValidException::NAMESPACE_DOES_NOT_MATCH_PATH);
+         }
+-        return true;
++        return false;
+     }
+     private function namespaceBelongsToBaseNamespace() : bool
+     {
+
+
+14) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:12    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+ {
+     private $phpClasses = [];
+     private $baseNamespace;
+-    public function setBaseNamespace(string $baseNamespace) : void
++    protected function setBaseNamespace(string $baseNamespace) : void
+     {
+         $this->baseNamespace = $baseNamespace;
+     }
+
+
+15) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:17    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->baseNamespace = $baseNamespace;
+     }
+-    public function getPhpClasses() : array
++    protected function getPhpClasses() : array
+     {
+         return $this->phpClasses;
+     }
+
+
+16) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:22    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+     {
+         return $this->phpClasses;
+     }
+-    public function loadPhpClassesInPath(string $path)
++    protected function loadPhpClassesInPath(string $path)
+     {
+         $phpFiles = $this->findPhpFilesInPath($path);
+         foreach ($phpFiles as $phpFile) {
+
+
+17) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:26    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+     public function loadPhpClassesInPath(string $path)
+     {
+         $phpFiles = $this->findPhpFilesInPath($path);
+-        foreach ($phpFiles as $phpFile) {
++        foreach (array() as $phpFile) {
+             $phpClass = new PhpClass();
+             $phpClass->setBaseNamespace($this->baseNamespace);
+             $relativeFilePath = $phpFile->getRelativePath();
+
+
+18) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:29    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $phpFiles = $this->findPhpFilesInPath($path);
+         foreach ($phpFiles as $phpFile) {
+             $phpClass = new PhpClass();
+-            $phpClass->setBaseNamespace($this->baseNamespace);
++            
+             $relativeFilePath = $phpFile->getRelativePath();
+             $phpClass->setRelativePath($relativeFilePath);
+             $absoluteFilePath = $phpFile->getRealPath();
+
+
+19) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:32    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $phpClass = new PhpClass();
+             $phpClass->setBaseNamespace($this->baseNamespace);
+             $relativeFilePath = $phpFile->getRelativePath();
+-            $phpClass->setRelativePath($relativeFilePath);
++            
+             $absoluteFilePath = $phpFile->getRealPath();
+             $phpClass->setAbsolutePath($absoluteFilePath);
+             $fileContents = $phpFile->getContents();
+
+
+20) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:35    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $relativeFilePath = $phpFile->getRelativePath();
+             $phpClass->setRelativePath($relativeFilePath);
+             $absoluteFilePath = $phpFile->getRealPath();
+-            $phpClass->setAbsolutePath($absoluteFilePath);
++            
+             $fileContents = $phpFile->getContents();
+             $namespace = $this->extractNamespaceFromClassContent($fileContents);
+             $phpClass->setNamespace($namespace);
+
+
+21) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:40    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $phpClass->setAbsolutePath($absoluteFilePath);
+             $fileContents = $phpFile->getContents();
+             $namespace = $this->extractNamespaceFromClassContent($fileContents);
+-            $phpClass->setNamespace($namespace);
++            
+             $classname = $this->extractClassnameFromClassContent($fileContents);
+             $phpClass->setClassname($classname);
+             $this->phpClasses[] = $phpClass;
+
+
+22) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:43    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $namespace = $this->extractNamespaceFromClassContent($fileContents);
+             $phpClass->setNamespace($namespace);
+             $classname = $this->extractClassnameFromClassContent($fileContents);
+-            $phpClass->setClassname($classname);
++            
+             $this->phpClasses[] = $phpClass;
+         }
+     }
+
+
+23) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:52    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private function findPhpFilesInPath(string $path) : Finder
+     {
+         $finder = new Finder();
+-        $finder->in($path);
++        
+         $finder->files();
+         return $finder;
+     }
+
+
+24) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:53    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $finder = new Finder();
+         $finder->in($path);
+-        $finder->files();
++        
+         return $finder;
+     }
+     private function extractNamespaceFromClassContent(string $classContent)
+
+
+25) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:62    [M] PregMatchMatches
+
+--- Original
++++ New
+@@ @@
+     private function extractNamespaceFromClassContent(string $classContent)
+     {
+         $pattern = '@namespace\\s+(.+);@i';
+-        preg_match($pattern, $classContent, $matches);
++        (int) ($matches = array());
+         $namespace = $matches[1];
+         return $namespace;
+     }
+
+
+26) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:62    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private function extractNamespaceFromClassContent(string $classContent)
+     {
+         $pattern = '@namespace\\s+(.+);@i';
+-        preg_match($pattern, $classContent, $matches);
++        
+         $namespace = $matches[1];
+         return $namespace;
+     }
+
+
+27) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:64    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $pattern = '@namespace\\s+(.+);@i';
+         preg_match($pattern, $classContent, $matches);
+-        $namespace = $matches[1];
++        $namespace = $matches[2];
+         return $namespace;
+     }
+     private function extractClassnameFromClassContent(string $classContent)
+
+
+28) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:64    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $pattern = '@namespace\\s+(.+);@i';
+         preg_match($pattern, $classContent, $matches);
+-        $namespace = $matches[1];
++        $namespace = $matches[0];
+         return $namespace;
+     }
+     private function extractClassnameFromClassContent(string $classContent)
+
+
+29) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:73    [M] PregMatchMatches
+
+--- Original
++++ New
+@@ @@
+     private function extractClassnameFromClassContent(string $classContent)
+     {
+         $pattern = '@(?>class|interface|trait)\\s+(.+)@i';
+-        preg_match($pattern, $classContent, $matches);
++        (int) ($matches = array());
+         $classname = $matches[1];
+         return $classname;
+     }
+ }
+
+30) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:73    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private function extractClassnameFromClassContent(string $classContent)
+     {
+         $pattern = '@(?>class|interface|trait)\\s+(.+)@i';
+-        preg_match($pattern, $classContent, $matches);
++        
+         $classname = $matches[1];
+         return $classname;
+     }
+ }
+
+31) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:75    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $pattern = '@(?>class|interface|trait)\\s+(.+)@i';
+         preg_match($pattern, $classContent, $matches);
+-        $classname = $matches[1];
++        $classname = $matches[2];
+         return $classname;
+     }
+ }
+
+
+32) C:\xampp\htdocs\github\php-nf\src\Classes\PhpClass\PhpClassLoader.php:75    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $pattern = '@(?>class|interface|trait)\\s+(.+)@i';
+         preg_match($pattern, $classContent, $matches);
+-        $classname = $matches[1];
++        $classname = $matches[0];
+         return $classname;
+     }
+ }

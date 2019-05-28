@@ -3,6 +3,7 @@
 namespace LeoVie\PhpNf\Tests\Unit\Configuration;
 
 use LeoVie\PhpNf\Exception\NamespaceIsNotValidException;
+use LeoVie\PhpNf\Exception\PropertyNotSetException;
 use LeoVie\PhpNf\PhpClass\PhpClass;
 use PHPUnit\Framework\TestCase;
 
@@ -26,6 +27,23 @@ class PhpClassTest extends TestCase
         $this->phpClass->setClassname(self::CLASSNAME);
         $this->phpClass->setRelativePath(self::RELATIVE_PATH);
         $this->phpClass->setAbsolutePath(self::ABSOLUTE_PATH);
+    }
+
+    public function testThrowsWhenAbsolutePathIsNull()
+    {
+        $this->phpClass = new PhpClass();
+
+        self::expectException(PropertyNotSetException::class);
+        $this->phpClass->throwIfNamespaceIsNotValid();
+    }
+
+    public function testThrowsWhenNamespaceIsNull()
+    {
+        $this->phpClass = new PhpClass();
+        $this->phpClass->setAbsolutePath(self::ABSOLUTE_PATH);
+
+        self::expectException(PropertyNotSetException::class);
+        $this->phpClass->throwIfNamespaceIsNotValid();
     }
 
     public function testThrowsIfNamespaceDoesNotBelongToBaseNamespace(): void
@@ -58,7 +76,8 @@ class PhpClassTest extends TestCase
     {
         $this->setNamespaceBelongingToBaseNamespaceAndMatchingPath();
 
-        self::addToAssertionCount(1);
+        $result = $this->phpClass->throwIfNamespaceIsNotValid();
+        self::assertTrue($result);
     }
 
     private function setNamespaceBelongingToBaseNamespaceAndMatchingPath(): void

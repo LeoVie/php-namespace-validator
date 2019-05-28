@@ -28,8 +28,15 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">../src</directory>
+            <exclude>
+                <directory>../src/Classes/DependencyInjection/</directory>
+            </exclude>
         </whitelist>
     </filter>
-
+    <logging>
+        <log type="coverage-xml" target="../build/coverage/coverage-xml"/>
+        <log type="coverage-html" target="../build/coverage/coverage-html"/>
+        <log type="junit" target="../build/coverage/phpunit.junit.xml"/>
+    </logging>
 </phpunit>
