@@ -8,3 +8,6 @@ services:
 
   Symfony\Component\Console\Application:
     public: true
+
+  Symfony\Component\Finder\Finder:
+    public: true

@@ -9,6 +9,14 @@ class PhpClassLoader
     private $phpClasses = [];
     private $baseNamespace;
 
+    /** @var Finder */
+    private $finder;
+
+    public function __construct(Finder $finder)
+    {
+        $this->finder = $finder;
+    }
+
     public function setBaseNamespace(string $baseNamespace): void
     {
         $this->baseNamespace = $baseNamespace;
@@ -19,7 +27,7 @@ class PhpClassLoader
         return $this->phpClasses;
     }
 
-    public function loadPhpClassesInPath(string $path)
+    public function loadPhpClassesInPath(string $path): void
     {
         $phpFiles = $this->findPhpFilesInPath($path);
 
@@ -48,14 +56,13 @@ class PhpClassLoader
 
     private function findPhpFilesInPath(string $path): Finder
     {
-        $finder = new Finder();
-        $finder->in($path);
-        $finder->files();
+        $this->finder->in($path);
+        $this->finder->files();
 
-        return $finder;
+        return $this->finder;
     }
 
-    private function extractNamespaceFromClassContent(string $classContent)
+    private function extractNamespaceFromClassContent(string $classContent): string
     {
         $pattern = '@namespace\s+(.+);@i';
 
@@ -66,7 +73,7 @@ class PhpClassLoader
         return $namespace;
     }
 
-    private function extractClassnameFromClassContent(string $classContent)
+    private function extractClassnameFromClassContent(string $classContent): string
     {
         $pattern = '@(?>class|interface|trait)\s+(.+)@i';
 

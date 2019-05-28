@@ -26,7 +26,8 @@
     "classmap": ["src/AppKernel.php"]
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.5"
+    "phpunit/phpunit": "^7.5",
+    "infection/infection": "^0.13.1"
   },
   "config": {
     "bin-dir": "bin",
