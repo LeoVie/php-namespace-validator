@@ -40,4 +40,4 @@ jobs:
             - ./vendor
 
       # run tests with phpunit or codecept
-      - run: ./bin/phpunit --configuration=config/phpunit.xml
+      - run: ./bin/phpunit --configuration=config/phpunit.xml src/Tests/Unit
